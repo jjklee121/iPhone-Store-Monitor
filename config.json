@@ -1,8 +1,8 @@
 {
-    "country_code": "us",
-    "device_family": "iphone8",
-    "zip_code": "90210",
-    "models":["MQ8J2LL/A"],
-    "carriers":["UNLOCKED/US"],
-    "stores":["R462"]
+    "country_code": "gb",
+    "device_family": "iphonex",
+    "zip_code": "b904ss",
+    "stores":["R255","R118"],
+	"models":["MQAF2B","MQAG2B"],
+	"pushbullet_key": "your key here"	
 }

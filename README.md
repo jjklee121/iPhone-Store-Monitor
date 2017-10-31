@@ -1,3 +1,12 @@
+Original credit goes to https://github.com/insanoid/Apple-Store-Reserve-Monitor for the stock checking functionality
+
+Added in PushBullet notification for devices when stock is found
+You need to add in your PushBullet key in the config
+Also you will need to run `pip install pushbullet.py` in addition to the below steps
+
+For the config settings for stores and iPhone models remove the stores and models to show everything.
+This will give you the store/model codes you need to filter down by. 
+
 # Apple Store Reserve Monitor
 ### Supports iPhone 8 and iPhone X
 

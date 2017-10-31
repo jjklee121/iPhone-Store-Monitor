@@ -51,6 +51,17 @@ zip_code = config.get('zip_code', [])
 selected_device_models = config.get('models', [])
 selected_carriers = config.get('carriers', [])
 selected_stores = config.get('stores', [])
+pushbullet_key = config.get('pushbullet_key')
+
+isPushBulletOk = False
+
+try:
+    from pushbullet import Pushbullet
+    pb = Pushbullet(pushbullet_key)
+    pb.push_note("iPhone Stock checker initialised", "Firing up...")
+    isPushBulletOk = True
+except:
+    print('Error with starting up PushBullet. Check the key in config')
 
 ## Since the URL only needs country code for non-US countries, switch the URL for country == US.
 if country_code.upper() == 'US':
@@ -123,9 +134,13 @@ for store in stores:
     print('\n\n{}{}, {} ({})'.format(bcolors.OKGREEN, store.get('storeName'), store.get('city'), store.get('storeId')))
     for part_id, part in store.get('parts').items():
         if part.get('storeSelectionEnabled') is True:
+            if isPushBulletOk is True:
+                pb.push_note(part.get('storePickupProductTitle'), "Stock found @" + store.get('storeName'))
+			
             stock_available = True
             print(" - {} {} ({})".format(bcolors.OKBLUE, part.get('storePickupProductTitle'), part.get('partNumber')))
         else:
+				
             print(" - {} {} ({})".format(bcolors.FAIL, part.get('storePickupProductTitle'), part.get('partNumber')))
 
 ## Play the sound if phone is available.
